@@ -10,23 +10,15 @@ public class Main {
     private int numberOfElements;
     private int target;
 
-    public static void main() {
-
-        Main main = new Main();
-        main.read();
-        main.print();
-        System.out.println(Arrays.toString(main.twoSum(main.getData(), main.getTarget())));
-    }
-
-    private int[] getData() {
-        return data;
-    }
-
-    private int getTarget() {
+    public int getTarget() {
         return target;
     }
 
-    public Main() {
+    public static void main() {
+        Main main = new Main();
+        main.read();
+        main.print();
+        System.out.println("The indices which add up to " + main.getTarget() + " are " + Arrays.toString(main.twoSum()));
     }
 
     public void read() {
@@ -34,10 +26,9 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
         numberOfElements = scanner.nextInt();
         data = new int[numberOfElements];
+        System.out.print("Read elements of the array one by one (each separated by a whitespace - blank/tab/new-line)): ");
 
-        System.out.print("Now, read the elements one by one (each separated by a whitespace (space, tab, or newline)): ");
-
-        for (int i = 0; i < data.length; i++) {
+        for (int i = 0; i < numberOfElements; i++) {
             data[i] = scanner.nextInt();
         }
         System.out.print("Enter the target : ");
@@ -46,20 +37,17 @@ public class Main {
     }
 
     public void print() {
-        for (int i = 0; i < numberOfElements; i++) {
-            System.out.println(data[i] + "\t");
-        }
-        System.out.println("\n");
+        System.out.print("The array is as follows: ");
+        System.out.println(Arrays.toString(data));
     }
 
-    public int[] twoSum(int[] nums, int target) {
-        int length = nums.length;
+    public int[] twoSum() {
         int[] result = new int[2];
 
-        for (int i = 0; i < length; i++) {
+        for (int i = 0; i < numberOfElements; i++) {
 
-            for (int j = i + 1; j < length; j++) {
-                if (nums[i] + nums[j] == target) {
+            for (int j = i + 1; j < numberOfElements; j++) {
+                if (data[i] + data[j] == target) {
                     result[0] = i;
                     result[1] = j;
                     return result;
