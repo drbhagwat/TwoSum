@@ -98,6 +98,7 @@ public class Main {
      * @return an array containing the two indices, or {@code {-1, -1}} if no pair exists
      */
     public int[] twoSum() {
+        int [] result= {-1, -1};
 
         // Check every pair of elements
         for (int i = 0; i < data.length - 1; i++) {
@@ -105,10 +106,12 @@ public class Main {
             for (int j = i + 1; j < data.length; j++) {
 
                 if (data[i] + data[j] == target) {
-                    return new int[]{i, j};
+                    result[0] = i;
+                    result[1] = j;
+                    return result;
                 }
             }
         }
-        return new int[]{-1, -1};
+        return result;
     }
 }
